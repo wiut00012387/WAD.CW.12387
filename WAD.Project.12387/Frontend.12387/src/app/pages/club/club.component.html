@@ -1,0 +1,30 @@
+<main class="container">
+  <div class="club-card" *ngIf="club$ | async as club; else loading">
+    <div class="club-card-photo">
+      <img [src]="club.imageLink" [alt]="club.imageLink + ' - image'" />
+    </div>
+    <div class="club-card-info">
+      <div>
+        <h2>{{ club.name }}</h2>
+      </div>
+      <div>
+        <ul>
+          <li>Coach Name: {{ club.coachName }}</li>
+          <li>Stadium: {{ club.stadiumName }}</li>
+          <li>League: {{ club.league.name }}</li>
+          <li>Founded:{{ club.foundedYear | date }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="club-card-actions">
+      <button class="btn btn-outline" (click)="deleteClub(club.clubId)">
+        Delete
+      </button>
+      <a [routerLink]="'/edit-club/' + club.clubId" class="btn">Edit</a>
+    </div>
+  </div>
+</main>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

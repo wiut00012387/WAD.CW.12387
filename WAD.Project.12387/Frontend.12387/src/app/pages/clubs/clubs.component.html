@@ -1,0 +1,33 @@
+<main class="container">
+  <div>
+    <h1>Clubs</h1>
+    <a routerLink="/create-club" class="btn">Create Club</a>
+  </div>
+  <div class="leagues">
+    <ul *ngIf="leagues$ | async as leagues; else loading">
+      <li
+        [ngClass]="selectedLeague === '' ? 'active' : ''"
+        (click)="selectedLeague = ''"
+      >
+        All
+      </li>
+      <li
+        *ngFor="let league of leagues"
+        [ngClass]="selectedLeague === league.name ? 'active' : ''"
+        (click)="selectedLeague = league.name"
+      >
+        {{ league.name }}
+      </li>
+    </ul>
+  </div>
+  <ul *ngIf="clubs$ | async as clubs; else loading">
+    <app-clubs-card
+      *ngFor="let club of clubs | sort : selectedLeague"
+      [club]="club"
+    ></app-clubs-card>
+  </ul>
+</main>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

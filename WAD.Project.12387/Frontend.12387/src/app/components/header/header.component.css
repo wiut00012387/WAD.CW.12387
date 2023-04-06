@@ -1,0 +1,22 @@
+header {
+  background-color: var(--primary);
+  padding: 0.5rem 3rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  font-size: 1.4rem;
+}
+
+nav ul a {
+  color: white;
+  transition: all 0.3s;
+}
+
+nav ul a:hover {
+  opacity: 0.75;
+}

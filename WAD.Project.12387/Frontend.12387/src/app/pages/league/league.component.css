@@ -1,0 +1,19 @@
+table {
+  width: 100%;
+}
+.cell {
+  text-align: center;
+}
+.cell-win {
+  background-color: green;
+  color: white;
+}
+
+.cell-draw {
+  background-color: #eee;
+}
+
+.cell-lose {
+  background-color: red;
+  color: white;
+}

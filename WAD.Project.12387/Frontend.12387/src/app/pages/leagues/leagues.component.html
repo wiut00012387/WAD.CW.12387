@@ -1,0 +1,13 @@
+<main class="container">
+  <h1>Leagues</h1>
+  <ul *ngIf="leagues$ | async as leagues; else loading">
+    <app-leagues-card
+      *ngFor="let league of leagues"
+      [league]="league"
+    ></app-leagues-card>
+  </ul>
+</main>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

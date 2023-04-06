@@ -1,0 +1,30 @@
+<main class="container">
+  <div>
+    <h2>Football Leagues</h2>
+    <ul class="home-sroll" *ngIf="leagues$ | async as leagues; else loading">
+      <app-leagues-card
+        *ngFor="let league of leagues"
+        [league]="league"
+      ></app-leagues-card>
+    </ul>
+  </div>
+  <div>
+    <h2>Favorite Clubs</h2>
+    <ul class="home-sroll" *ngIf="clubs$ | async as clubs; else loading">
+      <app-clubs-card *ngFor="let club of clubs" [club]="club"></app-clubs-card>
+    </ul>
+  </div>
+  <div>
+    <h2>Top Players</h2>
+    <ul class="home-sroll" *ngIf="players$ | async as players; else loading">
+      <app-players-card
+        *ngFor="let player of players"
+        [player]="player"
+      ></app-players-card>
+    </ul>
+  </div>
+</main>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

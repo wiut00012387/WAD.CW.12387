@@ -1,0 +1,12 @@
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 1rem;
+  padding: 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  font-weight: 600;
+}

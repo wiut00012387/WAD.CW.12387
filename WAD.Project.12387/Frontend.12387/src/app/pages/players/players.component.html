@@ -1,0 +1,16 @@
+<main class="container">
+  <div>
+    <h1>Players</h1>
+    <a routerLink="/create-player" class="btn">Create Player</a>
+  </div>
+  <ul *ngIf="players$ | async as players; else loading">
+    <app-players-card
+      *ngFor="let player of players"
+      [player]="player"
+    ></app-players-card>
+  </ul>
+</main>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

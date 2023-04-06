@@ -1,0 +1,52 @@
+main {
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 1rem;
+  padding: 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  width: fit-content;
+}
+
+.leagues {
+  display: flex;
+  overflow-x: scroll;
+  margin-bottom: 3rem;
+}
+
+.leagues ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.leagues li {
+  list-style: none;
+  border: 1px solid var(--primary);
+  width: fit-content;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.leagues li.active {
+  background-color: var(--primary);
+  color: var(--tertiary);
+  font-weight: 500;
+}

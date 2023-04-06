@@ -1,0 +1,19 @@
+<li class="player-card">
+  <a [routerLink]="'/players/' + player.playerId">
+    <div class="player-card-photo">
+      <img [src]="player.imageLink" [alt]="player.name + ' - image'" />
+    </div>
+    <div class="player-card-info">
+      <div>
+        <h2>{{ player.name }}</h2>
+      </div>
+      <div>
+        <ul>
+          <li>Position: {{ player.position }}</li>
+          <li>Age: {{ player.age }}</li>
+          <li>Club: {{ player.club.name }}</li>
+        </ul>
+      </div>
+    </div>
+  </a>
+</li>

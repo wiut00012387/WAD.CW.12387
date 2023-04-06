@@ -1,0 +1,72 @@
+<main class="container">
+  <h1>Create Player</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+    <div class="form-block">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" formControlName="name" />
+      <ng-container *ngIf="form.controls['name'] as name">
+        <div class="error" *ngIf="name.dirty && name.hasError('required')">
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-block">
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" formControlName="age" />
+      <ng-container *ngIf="form.controls['age'] as age">
+        <div class="error" *ngIf="age.dirty && age.hasError('required')">
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-block">
+      <label for="position">Position</label>
+      <input
+        type="text"
+        id="position"
+        name="position"
+        formControlName="position"
+      />
+      <ng-container *ngIf="form.controls['position'] as position">
+        <div
+          class="error"
+          *ngIf="position.dirty && position.hasError('required')"
+        >
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-block">
+      <label for="imageLink">Player Image</label>
+      <input
+        type="text"
+        id="imageLink"
+        name="imageLink"
+        formControlName="imageLink"
+      />
+      <ng-container *ngIf="form.controls['imageLink'] as imageLink">
+        <div
+          class="error"
+          *ngIf="imageLink.dirty && imageLink.hasError('required')"
+        >
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-block" *ngIf="clubs$ | async as clubs">
+      <label for="club">Club</label>
+      <select id="club" name="club" formControlName="club">
+        <option [value]="club.clubId" *ngFor="let club of clubs">
+          {{ club.name }}
+        </option>
+      </select>
+
+      <ng-container *ngIf="form.controls['club'] as club">
+        <div class="error" *ngIf="club.dirty && club.hasError('required')">
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <button class="btn" type="submit" [disabled]="!form.valid">Create</button>
+  </form>
+</main>

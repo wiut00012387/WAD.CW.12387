@@ -1,0 +1,100 @@
+<main class="container">
+  <h1>Create Club</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+    <div class="form-block">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" formControlName="name" />
+      <ng-container *ngIf="form.controls['name'] as name">
+        <div class="error" *ngIf="name.dirty && name.hasError('required')">
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-block">
+      <label for="coachName">Coach Name</label>
+      <input
+        type="text"
+        id="coachName"
+        name="coachName"
+        formControlName="coachName"
+      />
+      <ng-container *ngIf="form.controls['coachName'] as coachName">
+        <div
+          class="error"
+          *ngIf="coachName.dirty && coachName.hasError('required')"
+        >
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-block">
+      <label for="stadiumName">Stadium Name</label>
+      <input
+        type="text"
+        id="stadiumName"
+        name="stadiumName"
+        formControlName="stadiumName"
+      />
+      <ng-container *ngIf="form.controls['stadiumName'] as stadiumName">
+        <div
+          class="error"
+          *ngIf="stadiumName.dirty && stadiumName.hasError('required')"
+        >
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-block">
+      <label for="imageLink">Club Image</label>
+      <input
+        type="text"
+        id="imageLink"
+        name="imageLink"
+        formControlName="imageLink"
+      />
+      <ng-container *ngIf="form.controls['imageLink'] as imageLink">
+        <div
+          class="error"
+          *ngIf="imageLink.dirty && imageLink.hasError('required')"
+        >
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-block">
+      <label for="foundedYear">Founded Year</label>
+      <input
+        type="date"
+        id="foundedYear"
+        name="foundedYear"
+        formControlName="foundedYear"
+      />
+      <ng-container *ngIf="form.controls['foundedYear'] as foundedYear">
+        <div
+          class="error"
+          *ngIf="foundedYear.dirty && foundedYear.hasError('required')"
+        >
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-block">
+      <label for="league">League</label>
+      <select id="league" name="league" formControlName="league">
+        <option
+          [value]="league.leagueId"
+          *ngFor="let league of leagues$ | async"
+        >
+          {{ league.name }}
+        </option>
+      </select>
+
+      <ng-container *ngIf="form.controls['league'] as league">
+        <div class="error" *ngIf="league.dirty && league.hasError('required')">
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+    <button class="btn" type="submit" [disabled]="!form.valid">Create</button>
+  </form>
+</main>

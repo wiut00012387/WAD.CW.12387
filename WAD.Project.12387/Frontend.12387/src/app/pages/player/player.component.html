@@ -1,0 +1,30 @@
+<main class="container">
+  <div class="player-card" *ngIf="player$ | async as player; else loading">
+    <div class="player-card-photo">
+      <img [src]="player.imageLink" [alt]="player.name + ' - image'" />
+    </div>
+    <div class="player-card-info">
+      <div>
+        <h2>{{ player.name }}</h2>
+      </div>
+      <div>
+        <ul>
+          <li>Position: {{ player.position }}</li>
+          <li>Age: {{ player.age }}</li>
+          <li>Team: {{ player.club.name }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="player-card-actions">
+      <button class="btn btn-outline" (click)="deletePlayer(player.playerId)">
+        Delete
+      </button>
+      <a [routerLink]="'/edit-player/' + player.playerId" class="btn">Edit</a>
+    </div>
+  </div>
+</main>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
